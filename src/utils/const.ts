@@ -1,0 +1,201 @@
+import dotenv from "dotenv";
+import Path from 'path';
+
+const dotEnvConfigs = {
+    path: Path.resolve(process.cwd(), ".env"),
+};
+dotenv.config(dotEnvConfigs);
+
+export enum BannerType {
+    PROMOTION = 'PROMOTION',
+    MAIN = 'MAIN',
+    SEARCH = 'SEARCH'
+}
+
+export enum BannerCategoryType {
+    CATEGORIES = 'CATEGORIES',
+    AGE = 'AGE',
+    CONCENTRATION = 'CONCENTRATION',
+    GENDER = 'GENDER',
+    PRICE = 'PRICE',
+    TARGET = 'TARGET',
+    PURPOSE = 'PURPOSE',
+    STYLE = 'STYLE'
+}
+
+export enum GENDER {
+    MALE = 'MALE',
+    FEMALE = 'FEMALE'
+}
+
+export enum FileType {
+    ALCOHOLICS = 'ALCOHOLICS',
+    BANNERS = 'BANNERS',
+    CATEGORIES = 'CATEGORIES',
+    COMMENTS = 'COMMENTS',
+    ICONS = 'ICONS',
+    ONBOARDINGS = 'ONBOARDINGS',
+    PRODUCTS = 'PRODUCTS',
+    REVIEWS = 'REVIEWS',
+    SPLASHS = 'SPLASHS',
+    AVATARS = 'AVATARS',
+    THUMBNAILS = 'THUMBNAILS'
+}
+
+export const DEFAULT_AVATAR = "https://d22x6xalfzwhud.cloudfront.net/AVATARS/v-2138/default-avatar.png";
+
+export const FILE_UPLOAD_LIMIT = 1 * 1024 * 1024;
+export const IMAGE_UPLOAD_LIMIT = 10 * 1024 * 1024;
+
+export enum KeywordType {
+    ADMIN = 'ADMIN',
+    SEARCH = 'SEARCH'
+}
+
+export enum PopupType {
+    REGISTER = 'REGISTER'
+}
+
+export enum ROLE_USER {
+    USER = 'USER',
+    ADMIN = 'ADMIN'
+}
+
+
+export const NOTIFICATION:any = {
+    ON  : 1,
+    OFF : 0
+}
+export const DATABASE_CONFIG: any = {
+    PORT: process.env.DB_PORT,
+    HOST: process.env.DB_HOST,
+    USER: process.env.DB_USER,
+    PASSWORD: process.env.DB_PASSWORD,
+    DB: process.env.DB_DATABASE,
+    DIALECT: process.env.DB_DIALECT,
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    },
+    dateStrings: true,
+    logging: true,
+    define: {
+        charset: 'utf8mb4',
+        collate: 'utf8mb4_unicode_ci'
+    }
+};
+export const FOLDER_S3: string[] = ['ALCOHOLICS', 'BANNERS', 'CATEGORIES', 'COMMENTS', 'ICONS', 'ONBOARDINGS', 'PRODUCTS', 'REVIEWS', 'SPLASHS', 'AVATARS', 'THUMBNAILS'];
+
+export const CONFIG = {
+    ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
+    REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET,
+    SERVER_PORT: process.env.SERVER_PORT,
+    JWT_EXPIRATION: 60 * 60 * 24 * 2,
+    JWT_ENCRYPTION: process.env.ACCESS_TOKEN_SECRET,
+    JWT_EXPIRATION_REFRESH: 60 * 60 * 24 * 365,
+    JWT_ENCRYPTION_REFRESH: process.env.REFRESH_TOKEN_SECRET,
+    IMP_KEY: process.env.IMP_KEY,
+    IMP_SECRET: process.env.IMP_SECRET,
+    IAMPORT_TOKEN_URL: process.env.IAMPORT_TOKEN_URL,
+    IAMPORT_CERTIFICATION_URL: process.env.IAMPORT_CERTIFICATION_URL
+}
+
+export const AWS_CONFIG = {
+    REGION: process.env.AWS_BUCKET_REGION,
+    BUCKET_NAME: process.env.AWS_BUCKET_NAME,
+    ACCESS_KEY: process.env.AWS_ACCESS_KEY,
+    SECRET_KEY: process.env.AWS_SECRET_KEY,
+    CLOUD_FRONT_ADDRESS: process.env.AWS_CLOUD_FRONT_ADDRESS
+};
+
+export const STATUS = {
+    ACTIVE: 1,
+    DELETED: 0
+}
+
+export const USER_STATUS = {
+    ACTIVE: 1,
+    PENDING: 0
+}
+
+export const HIGH_LIGHT = {
+    ON: 1,
+    OFF: 0
+}
+
+export const RECOMMNED = {
+    TRUE: 1,
+    FALSE: 0
+}
+
+export const NOTIFICATION_TOPIC = {
+    BANNER: "BANNER"
+}
+
+export const RABBIT_URL = process.env.RABBIT_URL;
+
+export const JOB_NAME = {
+    SAVE_IMAGE_GIFT: 'SAVE_IMAGE_GIFT',
+    SAVE_PRODUCT_BUNDLE_RELATION_EDIT: 'SAVE_PRODUCT_BUNDLE_RELATION_EDIT',
+    SAVE_IMAGE_GIFT_EDIT: 'SAVE_IMAGE_GIFT_EDIT',
+    SAVE_PRODUCT_BUNDLE_RELATION_DELETE: 'SAVE_PRODUCT_BUNDLE_RELATION_DELETE',
+    SAVE_IMAGE_GIFT_DELETE: 'SAVE_IMAGE_GIFT_DELETE',
+    SAVE_PRODUCT_BUNDLE_RELATION_DELETES: 'SAVE_PRODUCT_BUNDLE_RELATION_DELETES',
+    SAVE_IMAGE_GIFT_DELETES: 'SAVE_IMAGE_GIFT_DELETES',
+    SAVE_PRODUCT_CREATE: 'SAVE_PRODUCT_CREATE',
+    SAVE_PRODUCT_EDIT: 'SAVE_PRODUCT_EDIT',
+    SAVE_PRODUCT_DELETE: 'SAVE_PRODUCT_DELETE',
+    DELETE_USER: 'DELETE_USER',
+    DELETE_RELATION_REVIEW: 'DELETE_RELATION_REVIEW',
+    SAVE_USER_EDIT: 'SAVE_USER_EDIT',
+    DELETE_RELATION_REVIEWS: 'DELETE_RELATION_REVIEWS',
+    SUBCRIBE_TOKEN: 'SUBCRIBE_TOKEN',
+    UNSUBCRIBE_TOKEN: 'UNSUBCRIBE_TOKEN',
+    PUSH_NOTIFICATION: 'PUSH_NOTIFICATION',
+    DELETE_SNACKS: 'DELETE_SNACKS',
+}
+
+export const HttpStatusCode = {
+    SWITCHING_PROTOCOLS: 101,
+    OK: 200,
+    CREATED: 201,
+    ACCEPTED: 202,
+    NONAUTHORITATIVE_INFORMATION: 203,
+    NO_CONTENT: 204,
+    RESET_CONTENT: 205,
+    PARTIAL_CONTENT: 206,
+    MULTIPLE_CHOICES: 300,
+    MOVED_PERMANENTLY: 301,
+    MOVED_TEMPORARILY: 302,
+    SEE_OTHER: 303,
+    NOT_MODIFIED: 304,
+    USE_PROXY: 305,
+    BAD_REQUEST: 400,
+    UNAUTHORIZED: 401,
+    PAYMENT_REQUIRED: 402,
+    FORBIDDEN: 403,
+    NOT_FOUND: 404,
+    METHOD_NOT_ALLOWED: 405,
+    NOT_ACCEPTABLE: 406,
+    PROXY_AUTHENTICATION_REQUIRED: 407,
+    REQUEST_TIMEOUT: 408,
+    CONFLICT: 408,
+    GONE: 410,
+    LENGTH_REQUIRED: 411,
+    PRECONDITION_FAILED: 412,
+    REQUEST_ENTITY_TOO_LARGE: 413,
+    REQUESTURI_TOO_LARGE: 414,
+    UNSUPPORTED_MEDIA_TYPE: 415,
+    REQUESTED_RANGE_NOT_SATISFIABLE: 416,
+    EXPECTATION_FAILED: 417,
+    IM_A_TEAPOT: 418,
+    VALIDATED_FAILED: 422,
+    INTERNAL_SERVER_ERROR: 500,
+    NOT_IMPLEMENTED: 501,
+    BAD_GATEWAY: 502,
+    SERVICE_UNAVAILABLE: 503,
+    GATEWAY_TIMEOUT: 504,
+    HTTP_VERSION_NOT_SUPPORTED: 505
+}

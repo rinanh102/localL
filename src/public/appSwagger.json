@@ -1,0 +1,1844 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "LOCAL-LIQUOR'S APP API",
+        "description": "Local liquor admin api"
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "API for user in the system"
+        },
+        {
+            "name": "Main",
+            "description": "API for main page in the system"
+        }
+    ],
+    "servers": [
+        {
+            "url": "/api/CLIENT/v1/"
+        }
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/User"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/user/verify-email": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verify Email If exists",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            },
+     
+        "/user/verify-phone-number": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verify Phone Number If exists",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phoneNumber": {
+                                        "type": "string"
+                                    }
+                                }                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/verify-nickname": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verify Nickname If exists",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nickname": {
+                                        "type": "string"
+                                    }
+                                }                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/self-certification": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verify CI value and age",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "CI_value": {
+                                        "type": "string"
+                                    }
+                                }                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/reset-password": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Reset Password with Email",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/change-password": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Change Password",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "newPassword": {
+                                        "type": "string"
+                                    }
+                                }                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+        "/user/login-social": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login With Social",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string" 
+                                    },
+                                    "type": {       
+                                        "type": "string"
+                                    }, 
+                                    "name": { 
+                                        "type": "string"
+                                    },
+                                    "email": {  
+                                        "type": "string"
+                                    },
+                                    "age": {       
+                                        "type": "number"
+                                    }, 
+                                    "gender": { 
+                                        "type": "string"
+                                    },
+                                    "dateOfBirth": {  
+                                        "type": "string"
+                                    },
+                                    "CI_value": {
+                                        "type": "string"
+                                    },
+                                    "deviceToken": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/user/signup": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Sign up with email",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "nickname": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "dateOfBirth": {
+                                        "type": "Date"
+                                    },
+                                    "phoneNumber": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "number"
+                                    },
+                                    "gender": {
+                                        "type": "string"
+                                    },
+                                    "CI_value": {
+                                        "type": "string"
+                                    },
+                                    "deviceToken": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/user/renew-token": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Renew access token",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "refreshToken": {
+                                        "type": "string"
+                                    },
+                                    "deviceToken": {
+                                        "type": "string"
+                                    }
+                                }                          
+                              }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/logout": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User logout",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+         "/user/get-certifications": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get user's certifications from iamport",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "uid": {
+                                        "type": "string"
+                                    }
+                                    
+                                }                           
+                             }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+         },
+        "/onboarding/getList" : {
+            "get" :{
+                "tags":[
+                    "User"
+                ],
+                "summary": "Get Onboarding and Splash images",
+               
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/main/title" : {
+            "get" :{
+                "tags":[
+                    "Main Page"
+                ],
+                "summary": "Get Main Title",
+               
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/main/banners" : {
+            "get" :{
+                "tags":[
+                    "Main Page"
+                ],
+                "summary": "Promotion Banners",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "type",
+                        "required": true,
+                        "schema": {
+                            "page": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/main/gifts?page={page}&size={size}" : {
+            "get" :{
+                "tags":[
+                    "Main Page"
+                ],
+                "summary": "Gift Recommended List",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "schema": {
+                            "page": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "size",
+                        "required": true,
+                        "schema": {
+                            "size": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/main/gift/detail" : {
+            "get" :{
+                "tags":[
+                    "Main Page"
+                ],
+                "summary": "Gift Recommend Detail",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "page": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/gift/total-click" : {
+            "get" :{
+                "tags":[
+                    "Main Page"
+                ],
+                "summary": "Update total click on Gift",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/product/detail" : {
+            "get" :{
+                "tags":[
+                    "Product Detail Page"
+                ],
+                "summary": "Product Detail",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "page": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/product/total-click" : {
+            "get" :{
+                "tags":[
+                    "Product Detail Page"
+                ],
+                "summary": "Update total click on Buy Product",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/reviews-product" : {
+            "get" :{
+                "tags":[
+                    "Product Detail Page"
+                ],
+                "summary": "Get Reviews of the Product",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "productId",
+                        "required": true,
+                        "schema": {
+                            "productId": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "page",
+                        "required": true,
+                        "schema": {
+                            
+                            "page": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "size",
+                        "required": true,
+                        "schema": {
+                            
+                            "size": {
+                                "type": "number"
+                            }
+                        }
+                    }
+
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/reviews-product/all" : {
+            "get" :{
+                "tags":[
+                    "Product Detail Page"
+                ],
+                "summary": "Get ALL Reviews of the Product",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "productId",
+                        "required": true,
+                        "schema": {
+                            "productId": {
+                                "type": "number"
+                            }
+                            
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/like-product" : {
+            "get" :{
+                "tags":[
+                    "Like Management"
+                ],
+                "summary": "Like Product",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "productId",
+                        "required": true,
+                        "schema": {
+                            "productId": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/like-review" : {
+            "get" :{
+                "tags":[
+                    "Like Management"
+                ],
+                "summary": "Like Review",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "reviewId",
+                        "required": true,
+                        "schema": {
+                            "reviewId": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/review" : {
+            "post" :{
+                "tags":[
+                    "Review Management"
+                ],
+                "summary": "Create new reiview",
+                "requestBody": {
+                    "description": "review object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "productId": {
+                                        "type": "number"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "image": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/file/upload" : {
+            "post" :{
+                "tags":[
+                    "Review Management"
+                ],
+                "summary": "Upload new reiview image",
+                "parameters": [
+                    {                       
+                        "in": "formData",
+                        "name": "file",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {                       
+                        "in": "formData",
+                        "name": "folder",
+                        "required": true,
+                        "type": "string",
+                        "value": "REVIEWS"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/file?id={id}": {
+            "delete": {
+                "tags": [
+                    "Review Management"
+                ],
+                "summary": "Delete review image",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+
+        "/products/recommend": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get all recommend products",
+                "parameters": [
+                    
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "order",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "filter",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+      
+        
+        "/products/search-name?name={name}": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Search product by name",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/keywords/popular": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get Popular Keywords",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/products/popular-search": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get all  products by popular search",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "keywordId",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/products/popular-search-admin": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get all  products by popular search on Admin",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "keywordId",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/keywords/search-history": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get Recent Search Keywords",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+     
+        "/keywords/recent-search": {
+            "delete": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Delete Recent Search Keywords",
+                "parameters": [
+                   
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/categories/filter": {
+            "get": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get Categories for Filter",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/products/filtered": {
+            "post": {
+                "tags": [
+                    "Catalog Management"
+                ],
+                "summary": "Get Filtered Products ",
+                "requestBody": {
+                    "description": "ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "categoryIds": {
+                                            "type": "array",
+                                            "items":{
+                                                "type": "number"
+                                            }
+                                    },
+                                    "priceIds": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    },
+                                    "concentrationIds": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    },
+                                    "limit": {
+                                        "type": "number"
+                                    },
+                                    "offset": {
+                                        "type": "number"
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/categories/select-form": {
+            "get": {
+                "tags": [
+                    "Gift Recommend Management"
+                ],
+                "summary": "Get Categories for select form of Gift Recommend",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/products/recommend-gifts": {
+            "post": {
+                "tags": [
+                    "Gift Recommend Management"
+                ],
+                "summary": "Get Filtered Products ",
+                "requestBody": {
+                    "description": "ids",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "categoryIds": {
+                                            "type": "array",
+                                            "items":{
+                                                "type": "number"
+                                            }
+                                    },
+                                    "ageIds": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    },
+                                    "typeIds": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    },
+                                    "concentrationIds": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    },
+                                    "limit": {
+                                        "type": "number"
+                                    },
+                                    "offset": {
+                                        "type": "number"
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/my-page/my-detail": {
+            "get": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Get user information detail.",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/my-page/my-likes": {
+            "get": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Get all my like products",
+                "parameters": [
+                   
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/my-page/my-reviews": {
+            "get": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Get all my reviewed products",
+                "parameters": [
+                   
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/systemSetting/getDetail" : {
+            "get" :{
+                "tags":[
+                    "My Page Management"
+                ],
+                "summary": "Get Terms and Conditions",
+               
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/systemSetting/kakaoUrl" : {
+            "get" :{
+                "tags":[
+                    "My Page Management"
+                ],
+                "summary": "Get Kakao URL",
+               
+                "produces": [
+                    "application/json"
+                ],
+                "responses":{
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "uuid": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/categories/user-profile": {
+            "get": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Get Categories for User Profile",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/my-page/my-detail/edit": {
+            "put": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Update my profile",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "avatar": {
+                                        "type": "number"
+                                    },
+                                    "nickname": {
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "newPassword": {
+                                        "type": "string"
+                                    },
+                                   
+                                    "phoneNumber": {
+                                        "type": "string"
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items":{
+                                            "type": "number"
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/my-page/notification/edit": {
+            "put": {
+                "tags": [
+                    "My Page Management"
+                ],
+                "summary": "Update my notification",
+                "requestBody": {
+                    "description": "user object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "notification": {
+                                        "type": "number"
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/regions": {
+            "get": {
+                "tags": [
+                    "Products by Region Management"
+                ],
+                "summary": "Get Province Regions",
+                
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/regions/districts": {
+            "get": {
+                "tags": [
+                    "Products by Region Management"
+                ],
+                "summary": "Get city by Province Regions",
+                "parameters": [
+                   
+                    {                       
+                        "in": "query",
+                        "name": "regionId",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/products/region": {
+            "get": {
+                "tags": [
+                    "Products by Region Management"
+                ],
+                "summary": "Get Products by Region ",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "regionId",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    {                       
+                        "in": "query",
+                        "name": "offset",
+                        "required": true,
+                        "schema": {
+                            "limit": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                    
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        }
+
+    },
+    "definitions": {
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "deviceToken": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+
+}

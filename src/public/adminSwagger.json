@@ -1,0 +1,378 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "LOCAL-LIQUOR'S ADMIN API",
+        "description": "Local liquor admin api"
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "API for user in the system"
+        },
+        {
+            "name": "Dashboard",
+            "description": "API for dashboard management"
+        },
+        {
+            "name": "File",
+            "description": "API for File system"
+        },
+        {
+            "name": "Product",
+            "description": "API for Product management"
+        },
+        {
+            "name": "Gift",
+            "description": "API for Gift management"
+        }
+    ],
+    "servers": [
+        {
+            "url": "/api/ADMIN/v1/"
+        }
+    ],
+    "paths": {
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {}
+            }
+        },
+
+        "/gift/create": {
+            "post": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "Create gift",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "discount": {
+                                        "type": "number"
+                                    },
+                                    "thumbnail": {
+                                        "type": "number"
+                                    },
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "productId": {
+                                                    "type": "number"
+                                                },
+                                                "quantity": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "alcoholics": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {}
+            }
+        },
+        "/gift/delete?id={id}": {
+            "delete": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "Delete gift",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/gift/edit": {
+            "put": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "Edit gift",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "giftId": {
+                                        "type": "number"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "discount": {
+                                        "type": "number"
+                                    },
+                                    "thumbnail": {
+                                        "type": "number"
+                                    },
+                                    "images": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "products": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "productId": {
+                                                    "type": "number"
+                                                },
+                                                "quantity": {
+                                                    "type": "number"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "alcoholics": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/gift/getDetail?id={id}": {
+            "get": {
+                "tags": [
+                    "Gift"
+                ],
+                "summary": "Get detail gift",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+
+        "/dashboard/getReviews": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Get member's graph",
+                "requestBody": {},
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+        "/dashboard/getMembers": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Get reviews",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "required": true
+                    },
+                    {
+                        "in": "header",
+                        "name": "X-Requested-With",
+                        "required": true
+                    }
+                ],
+                "requestBody": {},
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+
+        "/file/upload": {
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "upload file",
+                "parameters": [
+                    {                       
+                        "in": "formData",
+                        "name": "file",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {                       
+                        "in": "formData",
+                        "name": "folder",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/file/uploads": {
+            "post": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "upload multi file",
+                "parameters": [
+                    {                       
+                        "in": "formData",
+                        "name": "file",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {                       
+                        "in": "formData",
+                        "name": "folder",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/file/delete?id={id}": {
+            "delete": {
+                "tags": [
+                    "File"
+                ],
+                "summary": "delete file",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "id": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        },
+
+        "/product/searchName?name={name}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Search product by name",
+                "parameters": [
+                    {                       
+                        "in": "query",
+                        "name": "name",
+                        "required": true,
+                        "schema": {
+                            "name": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {}
+            }
+        }
+    }
+}
